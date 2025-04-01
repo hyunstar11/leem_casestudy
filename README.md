@@ -1,5 +1,4 @@
 # Case Study for Andrew Leem – Loan Default Prediction
----
 This project develops a production-ready machine learning pipeline for predicting loan default. It spans end-to-end processes including exploratory data analysis (EDA), preprocessing, feature engineering, model tuning, and prediction generation. The focus is on creating a scalable and interpretable pipeline for real-world application, especially where ground truth may be unavailable in test datasets.
 
 
