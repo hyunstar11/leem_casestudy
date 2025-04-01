@@ -13,7 +13,6 @@ This project develops a production-ready machine learning pipeline for predictin
 - Model training with hyperparameter optimization using Optuna
 - Cross-validation with Precision-Recall metrics for imbalanced data
 - Final predictions with feature ranking and interpretability
----
 
 ## Project Structure
 
