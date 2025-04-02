@@ -1,8 +1,6 @@
 import pytest
 from pathlib import Path
 
-
-
 @pytest.fixture(scope="session")
 def data_path() -> Path:
     return Path(__file__).resolve().parents[1] / "data"
