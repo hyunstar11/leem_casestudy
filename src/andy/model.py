@@ -1,4 +1,4 @@
-
+import time
 import numpy as np
 import optuna
 import shap
@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import RFECV
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.pipeline import Pipeline
-
+from sklearn.metrics import average_precision_score
 
 def create_model_pipeline(preprocessor, model=None) -> Pipeline:
     """
