@@ -127,13 +127,13 @@ def evaluate_features_by_count(model, X, y, feature_names, max_features=30, step
 
         clf = RandomForestClassifier(**model_params)
 
-        start = time.time()
+        time.time()
         score = cross_val_score(clf, X_k, y, cv=2, scoring='roc_auc').mean()
-        end = time.time()
+        time.time()
 
         scores.append((k, score))
 
         if verbose:
-            print(f"[{k} features] AUC: {score:.4f} | Time: {end - start:.2f} sec")
+            pass
 
     return scores, sorted_idx

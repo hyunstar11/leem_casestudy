@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import (
     auc,
     average_precision_score,
-    classification_report,
     f1_score,
     precision_recall_curve,
     roc_auc_score,
@@ -25,8 +24,6 @@ def plot_pr_curve(y_true, y_proba):
 def print_scores(y_true, y_pred, y_proba):
     f1 = f1_score(y_true, y_pred)
     ap = average_precision_score(y_true, y_proba)
-    print(f"F1 Score: {f1:.4f}")
-    print(f"Average Precision Score: {ap:.4f}")
     return f1, ap
 
 def evaluate_model(y_true, y_pred_proba, threshold=0.5, plot_pr=True):
@@ -48,11 +45,6 @@ def evaluate_model(y_true, y_pred_proba, threshold=0.5, plot_pr=True):
     precision, recall, _ = precision_recall_curve(y_true, y_pred_proba)
     pr_auc = auc(recall, precision)
 
-    print("📊 Evaluation Metrics:")
-    print(f"ROC AUC: {roc_auc:.4f}")
-    print(f"F1 Score: {f1:.4f}")
-    print(f"PR AUC: {pr_auc:.4f}")
-    print("\nClassification Report:\n", classification_report(y_true, y_pred))
 
     if plot_pr:
         plt.figure(figsize=(8, 6))
