@@ -87,18 +87,6 @@ def train_final_model(X, y, best_params) -> BaseEstimator:
     model.fit(X, y)
     return model
 
-def evaluate_feature_subset(model_class, X, y, feature_names, steps=[20, 40, 60, 80]):
-    scores = []
-    for n in steps:
-        selected_idx = np.argsort(model_class.feature_importances_)[::-1][:n]
-        X_sub = X[:, selected_idx]
-        model = RandomForestClassifier(**model_class.get_params())
-        model.fit(X_sub, y)
-        y_proba = model.predict_proba(X_sub)[:, 1]
-        ap = average_precision_score(y, y_proba)
-        scores.append((n, ap))
-    return scores
-
 def map_eda_to_ohe(eda_features, all_feature_names):
     mapped = []
     for eda in eda_features:
