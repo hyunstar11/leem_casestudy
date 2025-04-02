@@ -1,13 +1,13 @@
+
 import numpy as np
-import shap
 import optuna
-from typing import Tuple, List
+import shap
 from sklearn.base import BaseEstimator
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import cross_val_score, StratifiedKFold
-from sklearn.feature_selection import RFECV  
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import roc_auc_score
+from sklearn.feature_selection import RFECV
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.pipeline import Pipeline
+
 
 def create_model_pipeline(preprocessor, model=None) -> Pipeline:
     """
@@ -43,7 +43,7 @@ def optimize_hyperparameters(X, y, preprocessor, n_trials: int = 30) -> dict:
 
     return study.best_params
 
-def select_features(X_processed, y, model: BaseEstimator, feature_names: List[str]) -> Tuple[List[str], RFECV]:
+def select_features(X_processed, y, model: BaseEstimator, feature_names: list[str]) -> tuple[list[str], RFECV]:
     """
     Applies RFECV to select the most important features.
     """
@@ -60,7 +60,7 @@ def select_features(X_processed, y, model: BaseEstimator, feature_names: List[st
     selected = np.array(feature_names)[selector.support_]
     return selected.tolist(), selector
 
-def explain_with_shap(model: BaseEstimator, X_selected, feature_names: List[str]):
+def explain_with_shap(model: BaseEstimator, X_selected, feature_names: list[str]):
     """
     Uses SHAP to visualize feature importance.
     """
@@ -72,7 +72,7 @@ def final_modeling_pipeline(X_processed, y, feature_names, selected_features, ed
     # Combine features
     combined = list(set(selected_features + eda_features))
     combined_idx = [i for i, f in enumerate(feature_names) if f in combined]
-    
+
     X_final = X_processed[:, combined_idx]
     final_features = [feature_names[i] for i in combined_idx]
 

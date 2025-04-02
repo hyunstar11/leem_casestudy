@@ -1,5 +1,6 @@
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 
 def get_data_dir() -> Path:
@@ -17,7 +18,7 @@ def load_raw_data(path="../data/train.csv") -> pd.DataFrame:
 
 def load_clean_train_data() -> pd.DataFrame:
     df = load_raw_data()
-    
+
     # ⬇Add any cleaning steps here if needed
     # e.g., dropping nulls, converting types, etc.
     # df.dropna(inplace=True)

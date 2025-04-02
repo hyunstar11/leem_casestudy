@@ -1,6 +1,7 @@
-import pytest
+from collections.abc import Generator
+
 import numpy as np
-from typing import Generator
+import pytest
 
 @pytest.fixture(scope="session")
 def random_seed() -> int:

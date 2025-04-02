@@ -1,11 +1,18 @@
-from sklearn.metrics import roc_auc_score, f1_score, precision_recall_curve, auc, classification_report
-from sklearn.metrics import average_precision_score
 import matplotlib.pyplot as plt
+from sklearn.metrics import (
+    auc,
+    average_precision_score,
+    classification_report,
+    f1_score,
+    precision_recall_curve,
+    roc_auc_score,
+)
+
 
 def plot_pr_curve(y_true, y_proba):
     precision, recall, _ = precision_recall_curve(y_true, y_proba)
     pr_auc = auc(recall, precision)
-    
+
     plt.plot(recall, precision, label=f"PRAUC = {pr_auc:.4f}")
     plt.xlabel("Recall")
     plt.ylabel("Precision")
