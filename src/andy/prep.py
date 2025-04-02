@@ -1,7 +1,6 @@
 import re
 from collections import defaultdict
 from collections.abc import Set
-from typing import List, Dict
 
 import pandas as pd
 from jarowinkler import jaro_similarity
@@ -20,10 +19,10 @@ def normalize_title(title: str) -> str:
 
 
 def bin_job_titles(
-    common_titles: List[str], job_titles: pd.Series, threshold: float = 0.8
-) -> Dict[str, Set[str]]:
+    common_titles: list[str], job_titles: pd.Series, threshold: float = 0.8
+) -> dict[str, Set[str]]:
     """Bin job titles into groups."""
-    groups: Dict[str, Set[str]] = defaultdict(set)
+    groups: dict[str, Set[str]] = defaultdict(set)
 
     for job_title in tqdm(job_titles, desc="Binning job titles"):
         max_sim: float = -1.0
