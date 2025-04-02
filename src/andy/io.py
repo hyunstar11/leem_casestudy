@@ -13,8 +13,10 @@ def get_data_dir() -> Path:
     project_root = package_root.parent
     return project_root / "data"
 
+
 def load_raw_data(path="../data/train.csv") -> pd.DataFrame:
     return pd.read_csv(path)
+
 
 def load_clean_train_data() -> pd.DataFrame:
     df = load_raw_data()
@@ -25,6 +27,6 @@ def load_clean_train_data() -> pd.DataFrame:
 
     return df
 
+
 def load_cleaned_train_data() -> pd.DataFrame:
     return pd.read_parquet("data/train_cleaned.parquet")
-

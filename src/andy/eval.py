@@ -21,10 +21,12 @@ def plot_pr_curve(y_true, y_proba):
     plt.show()
     return pr_auc
 
+
 def print_scores(y_true, y_pred, y_proba):
     f1 = f1_score(y_true, y_pred)
     ap = average_precision_score(y_true, y_proba)
     return f1, ap
+
 
 def evaluate_model(y_true, y_pred_proba, threshold=0.5, plot_pr=True):
     """
@@ -45,19 +47,14 @@ def evaluate_model(y_true, y_pred_proba, threshold=0.5, plot_pr=True):
     precision, recall, _ = precision_recall_curve(y_true, y_pred_proba)
     pr_auc = auc(recall, precision)
 
-
     if plot_pr:
         plt.figure(figsize=(8, 6))
-        plt.plot(recall, precision, marker='.', label='PR Curve')
-        plt.xlabel('Recall')
-        plt.ylabel('Precision')
-        plt.title('Precision-Recall Curve')
+        plt.plot(recall, precision, marker=".", label="PR Curve")
+        plt.xlabel("Recall")
+        plt.ylabel("Precision")
+        plt.title("Precision-Recall Curve")
         plt.grid(True)
         plt.legend()
         plt.show()
 
-    return {
-        "roc_auc": roc_auc,
-        "f1_score": f1,
-        "pr_auc": pr_auc
-    }
+    return {"roc_auc": roc_auc, "f1_score": f1, "pr_auc": pr_auc}
